@@ -124,7 +124,8 @@ def algoritmo_genetico(epochs, HIPERPARAMETROS=None):
         if n < 1:
             raise ValueError("n must be at least one")
         iterator = iter(iterable)
-        while batch := tuple(islice(iterator, n)):
+        batch = islice(iterator, n)
+        while batch:
             if strict and len(batch) != n:
                 raise ValueError("batched(): incomplete batch")
             yield batch
