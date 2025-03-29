@@ -159,7 +159,7 @@ def algoritmo_genetico(epochs, HIPERPARAMETROS=None):
             poblacion = criba(poblacion)
 
     pool.close()
-    mejor_fitness, mejor_individuo = max(poblacion, key=lambda x: x[0])
+    mejor_fitness, mejor_individuo = min(poblacion, key=lambda x: x[0])
     return mejor_fitness, softmax(mejor_individuo)
 
 
@@ -175,7 +175,6 @@ if __name__ == "__main__":
 
     args, _ = parser.parse_known_args()
 
-    pool = Pool(5)
     t0 = time()
     print(
         algoritmo_genetico(
